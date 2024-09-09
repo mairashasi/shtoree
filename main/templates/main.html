@@ -1,0 +1,54 @@
+<h1 style="text-align: center;">SHTOREE</h1>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h5 {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.0em;
+        margin-bottom: 15px;
+    }
+
+    /* Style untuk ukuran */
+    .size-list {
+        display: flex;
+        gap: 10px;
+        list-style: none; /* Menghilangkan bullet point */
+        padding: 0;
+    }
+
+    .size-list li {
+        background-color: #f0f0f0;
+        padding: 5px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+</style>
+
+<h5>Name:</h5>
+<p>{{ name }}</p>
+
+<h5>Price:</h5>
+<p>Rp {{ price }}</p>
+
+<h5>Description:</h5>
+<p>{{ description }}</p>
+
+<h5>Size:</h5>
+<ul class="size-list">
+    <li>S</li>
+    <li>M</li>
+    <li>L</li>
+    <li>XL</li>
+    <li>XXL</li>
+</ul>
