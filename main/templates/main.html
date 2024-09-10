@@ -1,54 +1,110 @@
-<h1 style="text-align: center;">SHTOREE</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHTOREE</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-    }
+        h5 {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
 
-    h5 {
-        font-size: 1.2em;
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
+        p {
+            font-size: 1.0em;
+            margin-bottom: 15px;
+        }
 
-    p {
-        font-size: 1.0em;
-        margin-bottom: 15px;
-    }
+        /* Style untuk ukuran */
+        .size-list {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+        }
 
-    /* Style untuk ukuran */
-    .size-list {
-        display: flex;
-        gap: 10px;
-        list-style: none; /* Menghilangkan bullet point */
-        padding: 0;
-    }
+        .size-list li {
+            background-color: #f0f0f0;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
 
-    .size-list li {
-        background-color: #f0f0f0;
-        padding: 5px 15px;
-        border-radius: 5px;
-        font-weight: bold;
-    }
+        /* Flexbox container */
+        .container {
+            display: flex;
+            justify-content: flex-start; /* Membuat elemen-elemen dekat */
+            align-items: flex-start; /* Menyelaraskan bagian atas elemen */
+            gap: 20px; /* Jarak kecil antara teks dan gambar */
+        }
 
-</style>
+        /* Kolom untuk detail produk */
+        .product-details {
+            flex: 1;
+        }
 
-<h5>Name:</h5>
-<p>{{ name }}</p>
+        /* Kolom untuk gambar */
+        .product-image {
+            flex: 0 0 280px; /* Tetapkan lebar gambar dengan proporsional */
+            display: block;
+            height: 200px; /* Pastikan div punya tinggi */
+            background: url('https://static.zara.net/assets/public/8e48/fad0/7a014c5397c8/48f7c1d8c386/04083222427-015-p/04083222427-015-p.jpg?ts=1724962503654&w=1024') lightgray 50% / cover no-repeat;
+            margin-top: 30px;
+            margin-right: 0px
+        }
 
-<h5>Price:</h5>
-<p>Rp {{ price }}</p>
+        .product-image img {
+            width: 100%; /* Gambar memenuhi kotak */
+            height: auto;
+            border-radius: 10px;
+        }
 
-<h5>Description:</h5>
-<p>{{ description }}</p>
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">SHTOREE</h1>
 
-<h5>Size:</h5>
-<ul class="size-list">
-    <li>S</li>
-    <li>M</li>
-    <li>L</li>
-    <li>XL</li>
-    <li>XXL</li>
-</ul>
+    <p style="font-size: 0.8em; text-align: center;">Nama Aplikasi : {{ nama_aplikasi }}</p>
+    <p style="font-size: 0.8em; text-align: center;">Nama Mahasiswa : {{ nama_mahasiswa }}</p>
+    <p style="font-size: 0.8em; text-align: center;">Kelas : {{ nama_kelas }}</p>
+
+    <!-- Flexbox container -->
+    <div class="container">
+        <!-- Kolom detail produk -->
+
+        <!-- Kolom gambar produk -->
+        <!-- <div class="product-image"></div> -->
+        <!-- Menggunakan tag <img> untuk menampilkan gambar -->
+        <div class="product-image">
+            <img src="https://static.zara.net/assets/public/8e48/fad0/7a014c5397c8/48f7c1d8c386/04083222427-015-p/04083222427-015-p.jpg?ts=1724962503654&w=1024" alt="Product Image">
+        </div> 
+
+        <div class="product-details">
+            <h5>Name:</h5>
+            <p>{{ name }}</p>
+
+            <h5>Price:</h5>
+            <p>Rp {{ price }}</p>
+
+            <h5>Description:</h5>
+            <p>{{ description }}</p>
+
+            <h5>Size:</h5>
+            <ul class="size-list">
+                <li>S</li>
+                <li>M</li>
+                <li>L</li>
+                <li>XL</li>
+                <li>XXL</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
