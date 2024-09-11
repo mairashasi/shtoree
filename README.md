@@ -21,10 +21,10 @@ python manage.py startapp main
 ```
 dan membuat routing dan persiapan lainnya yang dijelaskan di Tutorial 1. Membuat folder templates di dalam folder main untuk membuat template lalu tambahkan file main.html.
 - Setelah itu, saya membuat model pada aplikasi `main` dengan nama `Product`, yang berisi atribut-atribut:
-   - `name` (CharField)
-   - `price` (IntegerField)
-   - `description` (TextField)
-   - `size` (CharField)
+   - name (CharField)
+   - price (IntegerField)
+   - description` (TextField)
+   - size (CharField)
 - Lalu, saya buat fungsi di `views.py`dia mengambil data dari model dan mengirimkan ke template untuk ditampilkan, variabel yang saya gunakan antara lain:
     - 'name' : nama produk
     - 'price' : harga produk
@@ -38,23 +38,21 @@ dan membuat routing dan persiapan lainnya yang dijelaskan di Tutorial 1. Membuat
 - Setelah berhasil, websitenya bisa diakses di http://maira-shasmeen-shtoree.pbp.cs.ui.ac.id
 
 
-
 3. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html :
-- 
 Client (Browser)
-    ↓
+↓
 Request (URL: /products/)
-    ↓
+↓
 urls.py (Mencari path 'products/')
-    ↓
+↓
 views.py (Fungsi 'show_products' dipanggil)
-    ↓
+↓
 models.py (Mengambil data dari database menggunakan Product.objects.all())
-    ↓
+↓
 views.py (Data dikirim ke template)
-    ↓
+↓
 HTML Template (products.html) (Menampilkan data produk)
-    ↓
+↓
 Response (Halaman web yang berisi daftar produk)
 - urls.py: Berfungsi untuk memetakan URL yang diminta oleh pemgguna ke fungsi view yang sesuai.
 - views.py: Mengambil data dari model (database) dan menyiapkannya untuk ditampilkan di template.
