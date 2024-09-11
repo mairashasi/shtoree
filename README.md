@@ -1,3 +1,5 @@
+**Tugas 2 PBP**
+
 1. Tautan menuju aplikasi PWS = http://maira-shasmeen-shtoree.pbp.cs.ui.ac.id
 
 2. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step :
@@ -26,6 +28,9 @@ dan membuat routing dan persiapan lainnya yang dijelaskan di Tutorial 1. Membuat
    - description` (TextField)
    - size (CharField)
 - Lalu, saya buat fungsi di `views.py`dia mengambil data dari model dan mengirimkan ke template untuk ditampilkan, variabel yang saya gunakan antara lain:
+    - 'nama_aplikasi'
+    - 'nama_mahasiswa'
+    - 'nama_kelas'
     - 'name' : nama produk
     - 'price' : harga produk
     - 'description': deskripsi produk
@@ -39,37 +44,39 @@ dan membuat routing dan persiapan lainnya yang dijelaskan di Tutorial 1. Membuat
 
 
 3. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html :
+```
 +----------------------+
-Client (Browser)
-+----------------------+
-↓
-+----------------------+
-Request (URL: /products/)
+| Client (Browser) |
 +----------------------+
 ↓
 +----------------------+
-urls.py (Mencari path 'products/')
+| Request (URL: /) |
 +----------------------+
 ↓
 +----------------------+
-views.py (Fungsi 'show_products' dipanggil)
+| urls.py (Mencari path '') |
 +----------------------+
 ↓
 +----------------------+
-models.py
+| views.py (Fungsi 'show_main' dipanggil) |
 +----------------------+
 ↓
 +----------------------+
-views.py (Data dikirim ke template)
+| models.py |
 +----------------------+
 ↓
 +----------------------+
-HTML Template (products.html) (Menampilkan data produk)
+| views.py (Data dikirim ke template) |
 +----------------------+
 ↓
 +----------------------+
-Response (Halaman web yang berisi daftar produk)
+| HTML Template (main.html) (Menampilkan data produk) |
 +----------------------+
+↓
++----------------------+
+| Response (Halaman web yang berisi informasi) |
++----------------------+
+```
 - urls.py: Berfungsi untuk memetakan URL yang diminta oleh pemgguna ke fungsi view yang sesuai.
 - views.py: Mengambil data dari model (database) dan menyiapkannya untuk ditampilkan di template.
 - models.py: Berisi definisi struktur data dan logika yang terkait dengan database.
