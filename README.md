@@ -39,29 +39,45 @@ dan membuat routing dan persiapan lainnya yang dijelaskan di Tutorial 1. Membuat
 
 
 3. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html :
++----------------------+
 Client (Browser)
++----------------------+
 ↓
++----------------------+
 Request (URL: /products/)
++----------------------+
 ↓
++----------------------+
 urls.py (Mencari path 'products/')
++----------------------+
 ↓
++----------------------+
 views.py (Fungsi 'show_products' dipanggil)
++----------------------+
 ↓
-models.py (Mengambil data dari database menggunakan Product.objects.all())
++----------------------+
+models.py
++----------------------+
 ↓
++----------------------+
 views.py (Data dikirim ke template)
++----------------------+
 ↓
++----------------------+
 HTML Template (products.html) (Menampilkan data produk)
++----------------------+
 ↓
++----------------------+
 Response (Halaman web yang berisi daftar produk)
++----------------------+
 - urls.py: Berfungsi untuk memetakan URL yang diminta oleh pemgguna ke fungsi view yang sesuai.
 - views.py: Mengambil data dari model (database) dan menyiapkannya untuk ditampilkan di template.
-- models.py: Berisi definisi struktur data (model) dan logika yang terkait dengan database.
+- models.py: Berisi definisi struktur data dan logika yang terkait dengan database.
 - HTML Template: Digunakan untuk menampilkan data yang dikirim oleh view dalam bentuk yang bisa dilihat oleh pengguna.
 
 4. Jelaskan fungsi git dalam pengembangan perangkat lunak!
-- Setiap perubahan yang dilakukan di kode bisa dilacak, sehingga memudahkan kita mengetahui siapa yang mengubah apa.
-- Dengan Git, kita bisa bekerja bersama dengan tim dalam satu proyek, menggabungkan (merge) kode yang dibuat masing-masing anggota.
+- Setiap perubahan yang dilakukan di kode bisa dilacak, jadi memudahkan kita mengetahui siapa yang mengubah apa.
+- Dengan Git, kita bisa bekerja bersama dengan tim dalam satu proyek, menggabungkan kode yang dibuat masing-masing anggota.
 - Jika ada kesalahan, kita bisa kembali ke versi kode sebelumnya.
 - Bisa membuat cabang (branch) untuk mencoba fitur baru tanpa mengganggu kode utama.
 
