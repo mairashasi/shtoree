@@ -112,3 +112,8 @@ dan membuat routing dan persiapan lainnya yang dijelaskan di Tutorial 1. Membuat
 
  5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). :
 
+
+![alt text](<main/images/Screenshot 2024-09-17 at 18.26.03.png>)
+![alt text](<main/images/Screenshot 2024-09-17 at 18.25.09.png>)
+![alt text](<main/images/Screenshot 2024-09-17 at 18.26.46.png>)
+![alt text](<main/images/Screenshot 2024-09-17 at 18.26.52.png>)

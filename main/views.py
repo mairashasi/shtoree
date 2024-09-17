@@ -16,7 +16,7 @@ def show_main(request):
         'price': 629900,
         'description': 'Shirt with a Johnny collar and long sleeves. Featuring front patch pockets and a button-up front with snap buttons.',
         'size': 'S, M, L, XL, XXL',
-        'product_rates' : product_rating
+        'product_rating' : product_rating
 
     }
 
