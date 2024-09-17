@@ -126,7 +126,7 @@ class Product(models.Model):
     feedback = models.TextField()  
     rating = models.IntegerField(default=0)  
 ``` 
-agar dan menjalankan perintah migrate.
+dan menjalankan perintah migrate.
 - Langkah berikutnya adalah membuat form dengan membuat file forms.py yang mendefinisikan model Product beserta field-nya seperti name, price, feedback, dan rating. Setelah itu, saya memodifikasi views.py dengan mengimpor ProductForm dan Product, serta menambahkan fungsi create_product_rating yang menggunakan form ini untuk menambahkan rating produk.
 - Lalu saya memodifikasi fungsi show_main di views.py untuk mengambil seluruh data produk yang tersimpan di database dengan menggunakan Product.objects.all(). Kemudian saya menambahkan data ini ke context dalam bentuk product_rating agar bisa ditampilkan di template.
 - Selanjutnya, saya memodifikasi urls.py dengan mengimpor fungsi create_product_entry dari views.py dan menambahkan path baru di urlpatterns seperti path('create-product-rating', create_product_rating, name='create_product_rating').
