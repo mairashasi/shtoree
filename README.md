@@ -99,7 +99,7 @@ dan membuat routing dan persiapan lainnya yang dijelaskan di Tutorial 1. Membuat
 # Tugas 3 PBP
 
  1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform? :
-
+- 
 
  2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML? :
 
@@ -113,6 +113,7 @@ dan membuat routing dan persiapan lainnya yang dijelaskan di Tutorial 1. Membuat
  5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). :
 
 
+**Screenshot akses URL pada Postman**
 ![XML](./main/images/XML.png)
 ![JSON](./main/images/JSON.png)
 ![XML by ID](./main/images/XMLID.png)
