@@ -113,7 +113,7 @@ dan membuat routing dan persiapan lainnya yang dijelaskan di Tutorial 1. Membuat
  5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). :
 
 
-![XML](<main/images/Screenshot 2024-09-17 at 18.26.03.png>)
-![JSON](<main/images/Screenshot 2024-09-17 at 18.25.09.png>)
-![XML by ID](<main/images/Screenshot 2024-09-17 at 18.26.46.png>)
-![JSON by ID](<main/images/Screenshot 2024-09-17 at 18.26.52.png>)
+![XML](./main/images/XML.png)
+![JSON](./main/images/JSON.png)
+![XML by ID](./main/images/XMLID.png)
+![JSON by ID](./main/images/JSONID.png)
