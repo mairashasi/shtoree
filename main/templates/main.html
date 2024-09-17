@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'base.html' %}
+{% block content %}
+
+{% block meta %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHTOREE</title>
@@ -63,8 +64,8 @@
         }
 
     </style>
-</head>
-<body>
+{% endblock meta %}
+
     <h1 style="text-align: center;">SHTOREE</h1>
 
     <p style="font-size: 0.8em; text-align: center;">Nama Aplikasi : {{ nama_aplikasi }}</p>
@@ -96,5 +97,34 @@
             </ul>
         </div>
     </div>
-</body>
-</html>
+
+    {% if not product_rating %}
+    <p>Belum ada data penilaian pada produk shtoree.</p>
+    {% else %}
+    <table>
+      <tr>
+        <th>Mood Name</th>
+        <th>Time</th>
+        <th>Feeling</th>
+        <th>Mood Intensity</th>
+      </tr>
+    
+      {% comment %} Berikut cara memperlihatkan data mood di bawah baris ini 
+      {% endcomment %} 
+      {% for produk in product_rating %}
+      <tr>
+        <td>{{produk.name}}</td>
+        <td>{{produk.price}}</td>
+        <td>{{produk.feedback}}</td>
+        <td>{{produk.rating}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+    
+    <br />
+    
+    <a href="{% url 'main:create_product_rating' %}">
+      <button>Add New Rating</button>
+    </a>
+{% endblock content %}
