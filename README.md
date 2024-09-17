@@ -1,4 +1,6 @@
-**Tugas 2 PBP**
+**Maira Shasmeen Mazaya 2306245724**
+
+# Tugas 2 PBP
 
 1. Tautan menuju aplikasi PWS = http://maira-shasmeen-shtoree.pbp.cs.ui.ac.id
 
@@ -93,3 +95,20 @@ dan membuat routing dan persiapan lainnya yang dijelaskan di Tutorial 1. Membuat
 
 6. Mengapa model pada Django disebut sebagai ORM?
 - ORM (Object Relational Mapping) adalah cara Django menghubungkan kode Python dengan database. Dengan ORM Kita bisa berinteraksi dengan database menggunakan objek Python, tanpa perlu menulis SQL yang rumit. Model di Django mewakili tabel di database. Misalnya, model Product akan menjadi tabel di database yang menyimpan produk-produk. ORM memudahkan kita melakukan operasi seperti membuat, membaca, memperbarui, dan menghapus data di database menggunakan kode Python
+
+# Tugas 3 PBP
+
+ 1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform? :
+
+
+ 2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML? :
+
+
+ 3. Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut? :
+
+
+ 4. Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang? :
+
+
+ 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). :
+
