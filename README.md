@@ -108,10 +108,10 @@
  - Method is_valid() di Django sangat membantu untuk memastikan data yang dimasukkan ke form sudah benar. Dengan is_valid(), kita bisa memeriksa apakah semua field telah diisi dengan benar dan menampilkan pesan error jika ada yang salah. Ini penting karena mencegah data yang tidak sesuai atau berpotensi berbahaya masuk ke sistem kita, sehingga kita bisa menjaga keamanan dan kualitas data yang masuk.
 
 
- 4. Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang? :
+ **4. Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang? :**
  - csrf_token adalah cara Django untuk melindungi aplikasi dari serangan yang memungkinkan penyerang mengirim permintaan berbahaya atas nama pengguna yang sudah login. Jika kita tidak menggunakan csrf_token maka penyerang bisa memanfaatkan kelemahan ini untuk mengirimkan permintaan palsu dan mengambil tindakan atas nama pengguna, seperti mengubah data atau melakukan tindakan yang tidak diinginkan. Dengan menambahkan csrf_token kita bisa memastikan bahwa setiap permintaan form berasal dari pengguna yang benarbenar mengirimnya, bukan dari sumber yang berbahaya.
 
- 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). :
+ **5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). :**
  - Pertama saya buat base.html yang berisi kerangka css untuk mendesain komponen website. Base ini akan dijadikan dasar untuk semua tampilan lainnya. Saya juga melakukan modifikasi di main.html (mengedit design serta menyesuaikan dengan base.html) dan settings.py tepatnya di bagian TEMPLATES, saya menambahkan :       
  ```bash
  'DIRS': [BASE_DIR / 'templates'], 
