@@ -99,10 +99,10 @@ dan membuat routing dan persiapan lainnya yang dijelaskan di Tutorial 1. Membuat
 # Tugas 3 PBP
 
  1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform? :
-- Data delivery sangat penting dalam pengimplementasian platform karena memastikan data dapat ditransfer dengan lancar dan efisien antar komponen platform, seperti antara frontend dan backend, atau antar microservices. Ini memungkinkan informasi dapat diakses secara real-time, meningkatkan performa dan pengalaman pengguna. Selain itu data delivery juga mendukung skalabilitas, keamanan, serta mempermudah analisis data, yang sangat krusial dalam memastikan platform dapat berkembang sesuai kebutuhan.
+- Data delivery sangat penting dalam pengimplementasian platform karena memastikan data dapat ditransfer dengan lancar dan efisien antar komponen platform, seperti antara frontend dan backend, atau antar microservices. Ini memungkinkan informasi dapat diakses secara real time, meningkatkan performa dan pengalaman pengguna. Selain itu data delivery juga mendukung skalabilitas, keamanan, serta mempermudah analisis data yang krusial dalam memastikan platform dapat berkembang sesuai kebutuhan.
 
  2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML? :
-- JSON lebih populer dibandingkan XML karena formatnya lebih sederhana, mudah dibaca, dan lebih ringan. JSON juga lebih cepat dalam parsing data dan memiliki ukuran file yang lebih kecil, membuatnya lebih efisien untuk digunakan dalam aplikasi web dan API. Selain itu, JSON lebih fleksibel karena mendukung banyak tipe data dengan struktur yang mudah dipahami oleh hampir semua bahasa pemrograman. Sementara itu, XML lebih cocok untuk menangani data kompleks, namun JSON lebih banyak digunakan karena kesederhanaannya dan kemampuannya dalam mempercepat transmisi data.
+- JSON lebih populer dibandingkan XML karena formatnya lebih sederhana dan mudah dibaca. JSON juga lebih cepat dalam parsing data dan memiliki ukuran file yang lebih kecil sehingga lebih efisien untuk digunakan dalam aplikasi web dan API. Selain itu JSON lebih fleksibel karena mendukung banyak tipe data dengan struktur yang mudah dipahami oleh hampir semua bahasa pemrograman. Sementara XML lebih cocok untuk menangani data kompleks, namun JSON lebih banyak digunakan karena kesederhanaannya dan kemampuannya dalam mempercepat transmisi data.
 
  3. Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut? :
 - Method is_valid() di Django sangat membantu untuk memastikan data yang dimasukkan ke form sudah benar. Dengan is_valid(), kita bisa memeriksa apakah semua field telah diisi dengan benar dan menampilkan pesan error jika ada yang salah. Ini penting karena mencegah data yang tidak sesuai atau berpotensi berbahaya masuk ke sistem kita, sehingga kita bisa menjaga keamanan dan kualitas data yang masuk.
@@ -112,7 +112,7 @@ dan membuat routing dan persiapan lainnya yang dijelaskan di Tutorial 1. Membuat
 - csrf_token adalah cara Django untuk melindungi aplikasi dari serangan yang memungkinkan penyerang mengirim permintaan berbahaya atas nama pengguna yang sudah login. Jika kita tidak menggunakan csrf_token maka penyerang bisa memanfaatkan kelemahan ini untuk mengirimkan permintaan palsu dan mengambil tindakan atas nama pengguna, seperti mengubah data atau melakukan tindakan yang tidak diinginkan. Dengan menambahkan csrf_token kita bisa memastikan bahwa setiap permintaan form berasal dari pengguna yang benarbenar mengirimnya, bukan dari sumber yang berbahaya.
 
  5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). :
-- Pertama saya buat base.html yang berisi kerangka CSS untuk mendesain komponen website. Base ini kemudian saya jadikan dasar untuk semua tampilan lainnya. - Saya juga melakukan modifikasi pada settings.py tepatnya di bagian TEMPLATES, saya menambahkan         
+- Pertama saya buat base.html yang berisi kerangka css untuk mendesain komponen website. Base ini akan dijadikan dasar untuk semua tampilan lainnya. Saya juga melakukan modifikasi di main.html (mengedit design serta menyesuaikan dengan base.html) dan settings.py tepatnya di bagian TEMPLATES, saya menambahkan :       
 ```bash
 'DIRS': [BASE_DIR / 'templates'], 
 ```
@@ -127,15 +127,15 @@ class Product(models.Model):
     rating = models.IntegerField(default=0)  
 ``` 
 dan menjalankan perintah migrate.
-- Langkah berikutnya adalah membuat form dengan membuat file forms.py yang mendefinisikan model Product beserta field-nya seperti name, price, feedback, dan rating. Setelah itu, saya memodifikasi views.py dengan mengimpor ProductForm dan Product, serta menambahkan fungsi create_product_rating yang menggunakan form ini untuk menambahkan rating produk.
-- Lalu saya memodifikasi fungsi show_main di views.py untuk mengambil seluruh data produk yang tersimpan di database dengan menggunakan Product.objects.all(). Kemudian saya menambahkan data ini ke context dalam bentuk product_rating agar bisa ditampilkan di template.
+- Langkah berikutnya adalah membuat form dengan membuat file forms.py yang mendefinisikan model Product beserta fieldnya seperti name, price, feedback, dan rating. Setelah itu, saya memodifikasi views.py dengan mengimpor ProductForm dan Product, serta menambahkan fungsi create_product_rating yang menggunakan form ini untuk menambahkan rating produk.
+- Lalu saya memodifikasi fungsi show_main di views.py untuk mengambil semua data produk yang tersimpan di database dengan menggunakan Product.objects.all(). Kemudian saya menambahkan data ini ke context dalam bentuk product_rating agar bisa ditampilkan di template.
 - Selanjutnya, saya memodifikasi urls.py dengan mengimpor fungsi create_product_entry dari views.py dan menambahkan path baru di urlpatterns seperti path('create-product-rating', create_product_rating, name='create_product_rating').
 - Lalu saya membuat file create_product_rating.html di dalam folder main/templates yang berisi form untuk menambah raating produk. Form ini memungkinkan pengguna memasukkan data produk yang kemudian akan ditampilkan di halaman utama.
 - Di dalam main.html, saya menambahkan kode untuk menampilkan produkproduk yang diinput ke dalam database. Produk-produk ini ditampilkan di dalam box deskripsi, sesuai dengan data yang ada di database.
-- Kemudian saya menambahkan fungsi show_xml di views.py, yang menggunakan HttpResponse dan Serializer untuk mengembalikan data produk dalam format XML. Fungsi ini ditambahkan ke urls.py dengan path yang sesuai.
+- Kemudian saya menambahkan fungsi show_xml di views.py, yang gunain HttpResponse dan Serializer untuk mengembalikan data produk dalam format XML. Fungsi ini ditambahkan ke urls.py dengan path yang sesuai.
 - Langkah yang sama juga dilakukan untuk menampilkan data dalam format JSON. Saya membuat fungsi show_json di views.py dan menambahkan path-nya di urls.py.
-- Saya menambahkan dua fungsi baru, yaitu show_xml_by_id dan show_json_by_id, yang menerima parameter ID untuk mengembalikan data spesifik berdasarkan ID dalam format XML dan JSON. Saya juga menambahkan path untuk kedua fungsi ini di urls.py.
-- Pada tahap ini, saya sudah memiliki lima fungsi baru di views.py: create_product_rating, show_xml, show_json, show_xml_by_id, dan show_json_by_id, serta path URL baru di urls.py. Sehingga sekarang sudah bisa menerima input produk baru melalui form, menampilkan data di halaman utama, serta menyediakan data dalam format XML dan JSON, baik untuk seluruh produk maupun berdasarkan ID.
+- Lalu saya menambahkan dua fungsi baru lagi yaitu show_xml_by_id dan show_json_by_id, yang menerima parameter ID untuk mengembalikan data spesifik berdasarkan ID dalam format XML dan JSON. Saya juga menambahkan path untuk kedua fungsi ini di urls.py.
+- Disini saya sudah memiliki lima fungsi baru di views.py: create_product_rating, show_xml, show_json, show_xml_by_id, dan show_json_by_id, serta path URL baru di urls.py. Sehingga sekarang sudah bisa menerima input produk baru melalui form, menampilkan data di halaman utama, serta menyediakan data dalam format XML dan JSON, baik untuk seluruh produk maupun berdasarkan ID.
 
 **Screenshot akses URL pada Postman**
 ![XML](./main/images/XML.png)
