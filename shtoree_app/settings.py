@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ SECRET_KEY = 'django-insecure-1y2wf7=8*l$n0iyu-%fz5r%9g+477_wl%ld(0rl9sf&7&xrh_w
 DEBUG = False
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "maira-shasmeen-shtoree.pbp.cs.ui.ac.id"]
-
 
 # Application definition
 
@@ -83,7 +81,7 @@ DATABASES = {
 }
 
 
-# Password validation
+# Password validation 
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
