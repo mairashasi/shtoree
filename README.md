@@ -146,3 +146,46 @@
 ![XML by ID](./main/images/XMLID.png)
  JSON by ID :
 ![JSON by ID](./main/images/JSONID.png)
+
+# Tugas 2 PBP
+ **1. Apa perbedaan antara HttpResponseRedirect() dan redirect()**
+ - Perbedaannya adalah HttpResponseRedirect() itu fungsi yang perlu secara manual diarahkan ke URL, jadi harus memasukkan URL nya lengkap secara langsung. Sedangkan jika menggunakan redirect() bisa lebih fleksibel karena dia bisa menerima URL, nama view, atau instance model sebagai argumen, dan nanti Django yang akan menyelesaikan URLnya secara otomatis. Intinnya redirect() lebih mudah dan fleksibel, sementara HttpResponseRedirect() butuh URL secara langsung.
+ 
+ **2. Jelaskan cara kerja penghubungan model Product dengan User!**
+- Untuk menghubungkan model Product (produk) dengan User (pengguna), kita menggunakan ForeignKey. Ini berarti bahwa setiap produk terhubung ke satu pengguna. Dengan kata lain satu pengguna bisa memiliki banyak produk, tetapi satu produk hanya dimiliki oleh satu pengguna.
+
+ **3. Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.**
+- Authentication adalah proses memverifikasi identitas pengguna, yaitu memastikan bahwa pengguna yang mengklaim identitas tertentu benar-benar adalah orang yang dimaksud. Misalnya, saat pengguna memasukkan username dan password, sistem memeriksa apakah kombinasi ini valid.
+- Authorization adalah proses memeriksa apakah pengguna yang sudah masuk (login) diizinkan untuk mengakses fitur tertentu. Misalnya, setelah login, pengguna hanya bisa mengakses halaman yang diizinkan untuknya.
+- Saat pengguna login, Django akan memverifikasi username dan password yang diberikan. Jika valid, Django akan mengotentikasi pengguna dan mencatat status login mereka, yang memungkinkan pengguna tersebut mengakses area yang dilindungi otorisasi.
+- Implementasi di Django:
+  - Authentication: Gunakan fungsi authenticate() dan login() untuk memeriksa username dan password. Jika cocok, pengguna bisa login.
+    ```bash
+    from django.contrib.auth import authenticate, login
+
+      user = authenticate(username='username', password='password')
+      if user is not None:
+        login(request, user)
+    ```
+  - Authorization: Django menggunakan @login_required untuk membatasi halaman tertentu hanya bagi pengguna yang sudah login.
+    ```bash
+    from django.contrib.auth.decorators import login_required
+
+    @login_required
+    def halaman_terbatas(request):
+        # Hanya pengguna yang login bisa lihat halaman ini
+    ```
+
+ **4. Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?**
+- Django menggunakan session untuk mengingat pengguna. Setelah login, Django membuat session ID dan mengirimkannya ke browser sebagai cookie. Saat pengguna kembali ke situs, session ID tersebut dikirim kembali ke server untuk mengidentifikasi bahwa pengguna sudah login.
+- Cara kerja:
+  - Setelah login, Django menyimpan informasi sesi di server.
+  - Session ID dikirim ke browser pengguna sebagai cookie.
+  - Setiap kali pengguna mengunjungi halaman lain, session ID ini membantu Django mengenali pengguna tersebut.
+- Kegunaan lain dari cookies:
+  - Menyimpan preferensi pengguna: Misalnya, bahasa yang dipilih, atau tema situs.
+  - Menyimpan data sementara: Seperti status keranjang belanja dalam e-commerce.
+  - Pelacakan aktivitas: Digunakan untuk pelacakan aktivitas pengguna di situs (misalnya, untuk iklan).
+- Apakah semua cookies aman digunakan? Tidak semua cookies aman. Cookies bisa disalahgunakan jika tidak dienkripsi atau dilindungi dengan benar. Serangan seperti pencurian sesi (session hijacking) bisa terjadi jika cookies dicuri oleh pihak lain. Oleh karena itu, Django menerapkan keamanan cookies dengan menambahkan atribut seperti `HttpOnly` (Mencegah akses cookies dari JavaScript.) & `Secure` (Memastikan cookies hanya dikirim melalui koneksi HTTPS yang aman.)
+
+ **5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
