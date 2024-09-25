@@ -160,21 +160,7 @@
 - Saat pengguna login, Django akan memverifikasi username dan password yang diberikan. Jika valid, Django akan mengotentikasi pengguna dan mencatat status login mereka, yang memungkinkan pengguna tersebut mengakses area yang dilindungi otorisasi.
 - Implementasi di Django:
   - Authentication: Gunakan fungsi authenticate() dan login() untuk memeriksa username dan password. Jika cocok, pengguna bisa login.
-    ```bash
-    from django.contrib.auth import authenticate, login
-
-      user = authenticate(username='username', password='password')
-      if user is not None:
-        login(request, user)
-    ```
   - Authorization: Django menggunakan @login_required untuk membatasi halaman tertentu hanya bagi pengguna yang sudah login.
-    ```bash
-    from django.contrib.auth.decorators import login_required
-
-    @login_required
-    def halaman_terbatas(request):
-        # Hanya pengguna yang login bisa lihat halaman ini
-    ```
 
  **4. Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?**
 - Django menggunakan session untuk mengingat pengguna. Setelah login, Django membuat session ID dan mengirimkannya ke browser sebagai cookie. Saat pengguna kembali ke situs, session ID tersebut dikirim kembali ke server untuk mengidentifikasi bahwa pengguna sudah login.
