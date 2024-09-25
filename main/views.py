@@ -20,7 +20,7 @@ def show_main(request):
     product_rating = Product.objects.filter(user=request.user)
 
     context = {
-        'nama_mahasiswa': request.user.username,
+        'name': request.user.username,
         'nama_aplikasi': 'shtoree',
         'nama_mahasiswa': 'Maira Shasmeen Mazaya',
         'nama_kelas': 'Kelas B',

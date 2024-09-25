@@ -189,3 +189,44 @@
 - Apakah semua cookies aman digunakan? Tidak semua cookies aman. Cookies bisa disalahgunakan jika tidak dienkripsi atau dilindungi dengan benar. Serangan seperti pencurian sesi (session hijacking) bisa terjadi jika cookies dicuri oleh pihak lain. Oleh karena itu, Django menerapkan keamanan cookies dengan menambahkan atribut seperti `HttpOnly` (Mencegah akses cookies dari JavaScript.) & `Secure` (Memastikan cookies hanya dikirim melalui koneksi HTTPS yang aman.)
 
  **5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+- pertama, saya menambahkan import pada views.py :
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+
+- kedua, saya menambahkan fungsi register untuk menghasilkan formulir registrasi secara otomatis dan menghasilkan akun pengguna ketika data di-submit dari form.
+
+- lalu, saya menambahkan berkas html baru yaitu register.html pada main/templates, menambahkan import fungsi yang tadi sudah dibuat (from main.views import register), dan menambahkan path url ke dalam urlpatterns
+
+- keempat, saya membuat fungsi login, jadi di view.py ditambahin import lagi:
+```bash
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate, login
+```
+serta nambahin fungsi login_user untuk mengautentikasi pengguna yang ingin login.
+
+- lalu , saya menambahkan lagi berkas html baru yaitu login.html pada main/templates, menambahkan import fungsi yang tadi sudah dibuat (from main.views import login_user), dan menambahkan path url ke dalam urlpatterns
+
+- keenam, saya membuat fungsi logout, jadi saya menambahkan import dulu di view.py:
+```bash
+from django.contrib.auth import logout
+```
+kemudian menambahkan fungsi logout_user(request) dan pada main.html ditambah sebuah kode:
+```bash
+<a href="{% url 'main:logout' %}">
+  <button>Logout</button>
+</a>
+```
+dan pada urls.py tambahkan import fungsi yang tadi sudah dibuat (from main.views import logout_user), dan menambahkan path url ke dalam urlpatterns
+
+- ketujuh, saya buka lagi views.py dan nambahkan import login_required pada bagian paling atas. dan menambahlkan @login_required(login_url='/login') diatas def show_main(request).
+
+- Lanjut saya mensetup cookies untuk melihat data, saya menambahkan import untuk HttpResponseRedirect, reverse, dan datetime di file views.py. Selanjutnya, saya memodifikasi fungsi login_user pada blok if form.is_valid(), yang bertugas untuk melakukan login terlebih dahulu, membuat respons, dan menambahkan cookie last_login ke dalam respons tersebut. Kemudian, saya menambahkan variabel 'last_login': request.COOKIES['last_login'] ke dalam context agar informasi cookie last_login bisa terlihat di web. Selain itu, saya juga memodifikasi fungsi logout_user untuk menghapus cookie last_login saat pengguna melakukan logout. Saya kemudian menambahkan kode terkait last_logindi main.html agar informasi cookie tersebut bisa ditampilkan di aplikasi web saya.
+
+- Lalu, Untuk menghubungkan Model Product dengan User, saya mulai dengan import User ke dalam models.py. Kemudian, pada model product yang sudah ada, saya menambahkan baris kode seperti user = models.ForeignKey(User, on_delete=models.CASCADE) untuk menghubungkan setiap produk dengan satu pengguna melalui relasi. Setiap produk pasti terasosiasi dengan seorang pengguna.
+Setelah itu, saya membuka views.py dan memodifikasi fungsi create_product_rating sesuai panduan tutorial. Perubahan ini dilakukan agar objek dari form bisa disimpan ke dalam akun pengguna yang sedan login.
+
+- Saya juga memodifikasi nilai product_rating agar aplikasi hanya menampilkan objek produk yang terkait dengan pengguna yang sedang login, serta menambahkan ke dalam context 'name': request.user.username, untuk menampilkan nama pengguna yang sedang login.
+
+- Setelah semua perubahan, saya menjalankan perintah makemigrations dan migrate sesuai langkah-langkah yang ada di tutorial. Terakhir, saya membuka settings.py untuk mengimpor os dan mengubah variabel DEBUG menjadi PRODUCTION = os.getenv("PRODUCTION", False) dan DEBUG = not PRODUCTION.
+
+- Setelah semua selesai, baru saya edit untuk tampilan’’ html nnya.
