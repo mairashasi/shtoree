@@ -147,7 +147,7 @@
  JSON by ID :
 ![JSON by ID](./main/images/JSONID.png)
 
-# Tugas 2 PBP
+# Tugas 4 PBP
  **1. Apa perbedaan antara HttpResponseRedirect() dan redirect()**
  - Perbedaannya adalah HttpResponseRedirect() itu fungsi yang perlu secara manual diarahkan ke URL, jadi harus memasukkan URL nya lengkap secara langsung. Sedangkan jika menggunakan redirect() bisa lebih fleksibel karena dia bisa menerima URL, nama view, atau instance model sebagai argumen, dan nanti Django yang akan menyelesaikan URLnya secara otomatis. Intinnya redirect() lebih mudah dan fleksibel, sementara HttpResponseRedirect() butuh URL secara langsung.
  
