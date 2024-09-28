@@ -171,6 +171,20 @@
         <td>{{produk.price}}</td>
         <td>{{produk.feedback}}</td>
         <td>{{produk.rating}}</td>
+        <td>
+            <a href="{% url 'main:edit_product_rating' produk.pk %}">
+                <button>
+                    Edit
+                </button>
+            </a>
+        </td>
+        <td>
+            <a href="{% url 'main:delete_product_rating' produk.pk %}">
+                <button>
+                    Delete
+                </button>
+            </a>
+        </td>
       </tr>
       {% endfor %}
     </table>
@@ -189,5 +203,3 @@
     <h5>Sesi terakhir login: {{ last_login }}</h5>
 
 {% endblock content %}
-
-
