@@ -1,0 +1,59 @@
+{% load static %}
+<nav class="bg-[#952323] shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      
+      <div class="flex items-center space-x-4">
+        <a href="#" class="flex items-center">
+          <img src="{% static 'images/shtoree.png' %}" alt="logo" class="h-auto w-auto max-h-16 md:max-h-40"> 
+        </a>
+      </div>
+
+      <div class="hidden md:flex-grow md:px-4 md:flex"> 
+        <form action="#" method="GET" class="w-full">
+          <input type="text" name="search" placeholder="Search..." class="px-4 py-2 rounded-md w-full max-w-lg text-sm bg-[#DAD4B5] focus:outline-none focus:ring-2 focus:ring-[#A73121]">
+        </form>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="#" class="text-[#DAD4B5] hover:text-white">Home</a>
+        <a href="#" class="text-[#DAD4B5] hover:text-white">Products</a>
+        <a href="#" class="text-[#DAD4B5] hover:text-white">Categories</a>
+        <a href="#" class="text-[#DAD4B5] hover:text-white">Cart</a>
+        <span class="text-[#DAD4B5]">Welcome, {{ user.username }}</span>
+        <a href="{% url 'main:logout' %}" class="bg-[#A73121] hover:bg-[#952323] text-white px-4 py-2 rounded-md">Logout</a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="flex items-center md:hidden">
+        <button class="mobile-menu-button text-gray-300 hover:text-white focus:outline-none">
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mobile-menu hidden md:hidden">
+    <form action="#" method="GET" class="w-full px-4 py-2">
+      <input type="text" name="search" placeholder="Search..." class="px-4 py-2 rounded-md w-full bg-[#DAD4B5] text-sm focus:outline-none focus:ring-2 focus:ring-[#A73121]">
+    </form>
+    <a href="#" class="block px-4 py-2 text-sm text-[#DAD4B5] hover:bg-[#A73121]">Home</a>
+    <a href="#" class="block px-4 py-2 text-sm text-[#DAD4B5] hover:bg-[#A73121]">Products</a>
+    <a href="#" class="block px-4 py-2 text-sm text-[#DAD4B5] hover:bg-[#A73121]">Categories</a>
+    <a href="#" class="block px-4 py-2 text-sm text-[#DAD4B5] hover:bg-[#A73121]">Cart</a>
+    <span class="block px-4 py-2 text-sm text-[#DAD4B5]">Welcome, {{ user.username }}</span>
+    <a href="{% url 'main:logout' %}" class="block bg-[#A73121] hover:bg-[#952323] text-white px-4 py-2 rounded-md mx-4 my-2">Logout</a>
+  </div>
+</nav>
+
+<script>
+  const btn = document.querySelector("button.mobile-menu-button");
+  const menu = document.querySelector(".mobile-menu");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>

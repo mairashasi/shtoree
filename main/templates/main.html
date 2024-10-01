@@ -1,205 +1,60 @@
 {% extends 'base.html' %}
 {% block content %}
+{% include 'navbar.html' %}
+{% load static %}
 
-{% block meta %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHTOREE</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8 mt-10">
+    {% include "card_info.html" with title='Nama Aplikasi' value=nama_aplikasi %}
+    {% include "card_info.html" with title='Nama Mahasiswa' value=nama_mahasiswa %}
+    {% include "card_info.html" with title='Kelas' value=nama_kelas %}
+</div>
 
-        h5 {
-            color: #333;
-            font-weight: 700;
-            text-align: left;
-        }
-
-        p {
-            font-size: 1.0em;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .size-list {
-            display: flex;
-            gap: 10px;
-            list-style: none;
-            padding: 0;
-        }
-
-        .size-list li {
-            background-color: #eaeaea;
-            padding: 8px 18px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 0.9em;
-            color: #333;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .size-list li:hover {
-            background-color: #d4d4d4;
-        }
-
-        .container {
-            display: flex;
-            justify-content: flex-start; 
-            align-items: flex-start; 
-            gap: 30px; 
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-details {
-            flex: 1;
-        }
-
-        .product-image {
-            flex: 0 0 280px; 
-            display: block;
-            height: 280px; 
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-            font-size: 0.9em;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f1f1f1;
-            color: #333;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        button {
-            background-color: #ff7c0a;
-            color: white;
-            padding: 10px 20px;
-            font-size: 1em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #db8234;
-        }
-
-        .info-text {
-            font-size: 0.85em;
-            text-align: center;
-            color: #777;
-        }
-
-    </style>
-{% endblock meta %}
-
-<h1 style="text-align: center;">SHTOREE</h1>
-
-    <p class="info-text">Nama Aplikasi : {{ nama_aplikasi }}</p>
-    <p class="info-text">Nama Mahasiswa : {{ nama_mahasiswa }}</p>
-    <p class="info-text">Kelas : {{ nama_kelas }}</p>
-
-    <div class="container">
-        <div class="product-image">
-            <img src="https://static.zara.net/assets/public/8e48/fad0/7a014c5397c8/48f7c1d8c386/04083222427-015-p/04083222427-015-p.jpg?ts=1724962503654&w=1024" alt="Product Image">
-        </div> 
-
-        <div class="product-details">
-            <h5>Name:</h5>
+<div class="container mx-auto p-6">
+    <div class="flex justify-center space-x-6 bg-white p-6 rounded-lg shadow-lg">
+        <div class="bg-[#F2E8C6] rounded-lg overflow-hidden max-w-xs">
+            <img src="{% static 'images/denim-shirt.png' %}" alt="Product Image" class="w-full h-54 object-cover" >
+        </div>
+        <div>
+            <h5 class="text-xl font-bold mb-2 text-[#952323]">Name:</h5>
             <p>{{ name }}</p>
 
-            <h5>Price:</h5>
+            <h5 class="text-xl font-bold mt-4 mb-2 text-[#952323]">Price:</h5>
             <p>Rp {{ price }}</p>
 
-            <h5>Description:</h5>
+            <h5 class="text-xl font-bold mt-4 mb-2 text-[#952323]">Description:</h5>
             <p>{{ description }}</p>
 
-            <h5>Size:</h5>
-            <ul class="size-list">
-                <li>S</li>
-                <li>M</li>
-                <li>L</li>
-                <li>XL</li>
-                <li>XXL</li>
+            <h5 class="text-xl font-bold mt-4 mb-2">Size:</h5>
+            <ul class="flex space-x-4">
+                <li class="px-4 py-2 bg-gray-200 rounded-lg">S</li>
+                <li class="px-4 py-2 bg-gray-200 rounded-lg">M</li>
+                <li class="px-4 py-2 bg-gray-200 rounded-lg">L</li>
+                <li class="px-4 py-2 bg-gray-200 rounded-lg">XL</li>
+                <li class="px-4 py-2 bg-gray-200 rounded-lg">XXL</li>
             </ul>
         </div>
     </div>
+</div>
 
-    {% if not product_rating %}
-    <p>Belum ada data penilaian pada produk shtoree.</p>
-    {% else %}
-    <table>
-      <tr>
-        <th>Product Name</th>
-        <th>Price</th>
-        <th>Feedback</th>
-        <th>Rating</th>
-      </tr>
-      {% for produk in product_rating %}
-      <tr>
-        <td>{{produk.name}}</td>
-        <td>{{produk.price}}</td>
-        <td>{{produk.feedback}}</td>
-        <td>{{produk.rating}}</td>
-        <td>
-            <a href="{% url 'main:edit_product_rating' produk.pk %}">
-                <button>
-                    Edit
-                </button>
-            </a>
-        </td>
-        <td>
-            <a href="{% url 'main:delete_product_rating' produk.pk %}">
-                <button>
-                    Delete
-                </button>
-            </a>
-        </td>
-      </tr>
-      {% endfor %}
-    </table>
-    {% endif %}
-    
-    <br />
-    
+<div class="flex justify-between mt-6">
     <a href="{% url 'main:create_product_rating' %}">
-      <button>Add New Rating</button>
+        <button class="bg-[#347928] hover:bg-[#185519] text-white py-2 px-4 rounded">Add New Rating</button>
     </a>
 
-    <a href="{% url 'main:logout' %}">
-        <button>Logout</button>
-      </a>
+</div>
 
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
+{% if not product_rating %}
+<div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
+    <img src="{% static 'images/sedih-banget.jpeg' %}" alt="Sad face" class="w-32 h-32 mb-4"/>
+    <p class="text-center text-gray-600 mt-4">Belum ada data mood pada mental health tracker.</p>
+</div>
+{% else %}
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+    {% for product in product_rating %}
+        {% include 'card_rating.html' with product=product %}
+    {% endfor %}
+</div>
+{% endif %}
 
+<h5 class="text-gray-500 mt-6">Sesi terakhir login: {{ last_login }}</h5>
 {% endblock content %}

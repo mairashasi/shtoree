@@ -216,3 +216,5 @@ Setelah itu, saya membuka views.py dan memodifikasi fungsi create_product_rating
 - Setelah semua perubahan, saya menjalankan perintah makemigrations dan migrate sesuai langkah-langkah yang ada di tutorial. Terakhir, saya membuka settings.py untuk mengimpor os dan mengubah variabel DEBUG menjadi PRODUCTION = os.getenv("PRODUCTION", False) dan DEBUG = not PRODUCTION.
 
 - Setelah semua selesai, baru saya edit untuk tampilan’’ html nnya.
+
+# Tugas 5 PBP
