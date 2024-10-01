@@ -148,13 +148,13 @@
 ![JSON by ID](./main/images/JSONID.png)
 
 # Tugas 4 PBP
- **1. Apa perbedaan antara HttpResponseRedirect() dan redirect()**
+ **1. Apa perbedaan antara HttpResponseRedirect() dan redirect() :**
  - Perbedaannya adalah HttpResponseRedirect() itu fungsi yang perlu secara manual diarahkan ke URL, jadi harus memasukkan URL nya lengkap secara langsung. Sedangkan jika menggunakan redirect() bisa lebih fleksibel karena dia bisa menerima URL, nama view, atau instance model sebagai argumen, dan nanti Django yang akan menyelesaikan URLnya secara otomatis. Intinnya redirect() lebih mudah dan fleksibel, sementara HttpResponseRedirect() butuh URL secara langsung.
  
- **2. Jelaskan cara kerja penghubungan model Product dengan User!**
+ **2. Jelaskan cara kerja penghubungan model Product dengan User! :**
 - Untuk menghubungkan model Product (produk) dengan User (pengguna), kita menggunakan ForeignKey. Ini berarti bahwa setiap produk terhubung ke satu pengguna. Dengan kata lain satu pengguna bisa memiliki banyak produk, tetapi satu produk hanya dimiliki oleh satu pengguna.
 
- **3. Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.**
+ **3. Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut. :**
 - Authentication adalah proses memverifikasi identitas pengguna, yaitu memastikan bahwa pengguna yang mengklaim identitas tertentu benar-benar adalah orang yang dimaksud. Misalnya, saat pengguna memasukkan username dan password, sistem memeriksa apakah kombinasi ini valid.
 - Authorization adalah proses memeriksa apakah pengguna yang sudah masuk (login) diizinkan untuk mengakses fitur tertentu. Misalnya, setelah login, pengguna hanya bisa mengakses halaman yang diizinkan untuknya.
 - Saat pengguna login, Django akan memverifikasi username dan password yang diberikan. Jika valid, Django akan mengotentikasi pengguna dan mencatat status login mereka, yang memungkinkan pengguna tersebut mengakses area yang dilindungi otorisasi.
@@ -162,7 +162,7 @@
   - Authentication: Gunakan fungsi authenticate() dan login() untuk memeriksa username dan password. Jika cocok, pengguna bisa login.
   - Authorization: Django menggunakan @login_required untuk membatasi halaman tertentu hanya bagi pengguna yang sudah login.
 
- **4. Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?**
+ **4. Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan? :**
 - Django menggunakan session untuk mengingat pengguna. Setelah login, Django membuat session ID dan mengirimkannya ke browser sebagai cookie. Saat pengguna kembali ke situs, session ID tersebut dikirim kembali ke server untuk mengidentifikasi bahwa pengguna sudah login.
 - Cara kerja:
   - Setelah login, Django menyimpan informasi sesi di server.
@@ -174,7 +174,7 @@
   - Pelacakan aktivitas: Digunakan untuk pelacakan aktivitas pengguna di situs (misalnya, untuk iklan).
 - Apakah semua cookies aman digunakan? Tidak semua cookies aman. Cookies bisa disalahgunakan jika tidak dienkripsi atau dilindungi dengan benar. Serangan seperti pencurian sesi (session hijacking) bisa terjadi jika cookies dicuri oleh pihak lain. Oleh karena itu, Django menerapkan keamanan cookies dengan menambahkan atribut seperti `HttpOnly` (Mencegah akses cookies dari JavaScript.) & `Secure` (Memastikan cookies hanya dikirim melalui koneksi HTTPS yang aman.)
 
- **5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+ **5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). :**
 - pertama, saya menambahkan import pada views.py :
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -218,3 +218,18 @@ Setelah itu, saya membuka views.py dan memodifikasi fungsi create_product_rating
 - Setelah semua selesai, baru saya edit untuk tampilan’’ html nnya.
 
 # Tugas 5 PBP
+ **1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut! :** 
+ - Ketika ada beberapa aturan CSS selector yang diterapkan pada elemen yang sama, browser akan memilih aturan yang paling spesifik untuk diterapkan. Urutan prioritasnya adalah sebagai berikut: Pertama, Inline CSS, yaitu gaya yang langsung ditulis di dalam elemen HTML seperti `<div style="color: red;"></div>`, merupakan prioritas tertinggi. Kedua, ID Selector yang menggunakan ID elemen seperti `#my-id { color: blue; }`, memiliki prioritas tinggi karena ID sifatnya unik. Ketiga, Class Selector dan Pseudo-class yang menggunakan class atau pseudo-class seperti `.my-class { color: green; } atau :hover`. Dan keempat, Element Selector, yang langsung mengatur gaya untuk elemen HTML tertentu seperti `p { color: black; }` untuk semua elemen paragraf. 
+
+ **2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design! :**
+ - Responsive design adalah konsep penting dalam pengembangan web karena memungkinkan situs untuk menyesuaikan tampilannya dengan baik di berbagai ukuran layar, seperti ponsel, tablet, dan desktop. Hal ini penting karena semakin banyak orang yang mengakses internet melalui perangkat mobile, sehingga situs yang tidak responsif bisa terlihat berantakan dan sulit digunakan di layar kecil. Desain yang responsif juga meningkatkan pengalaman pengguna (user experience), karena situs menjadi lebih nyaman digunakan di berbagai perangkat. Selain itu, SEO juga terpengaruh, karena mesin pencari seperti Google memberikan peringkat lebih baik untuk situs yang responsif. Contoh aplikasi yang sudah menerapkan responsive design adalah Spotify, yang tampak rapi dan mudah digunakan di perangkat apa pun. Sebaliknya, beberapa situs lama yang belum diperbarui mungkin masih memiliki tampilan yang hanya bagus di desktop dan sulit digunakan di ponsel.
+
+ **3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut! :**
+ - Dalam CSS, margin, border, dan padding adalah tiga properti yang digunakan untuk mengatur jarak dan ruang di sekitar dan di dalam elemen HTML. Margin adalah jarak antara elemen dengan elemen lain di sekitarnya. Misalnya, jika sebuah elemen memiliki `margin: 20px;`, maka elemen tersebut akan memiliki jarak 20px dari elemen lain di sekitarnya. Border adalah garis yang mengelilingi elemen, yang berada di antara margin dan padding. Dengan `border: 2px solid black;`, elemen tersebut akan memiliki garis hitam di sekelilingnya. Padding adalah ruang di dalam elemen, yaitu jarak antara konten elemen dengan batas border-nya. Jika elemen memiliki `padding: 10px;`, maka konten elemen tersebut akan memiliki ruang 10px dari tepi border. Singkatnya, margin adalah ruang luar, border adalah bingkai, dan padding adalah bantalan di dalam elemen.
+
+ **4. Jelaskan konsep flex box dan grid layout beserta kegunaannya! :** 
+ - Flexbox adalah metode layout dalam CSS yang digunakan untuk menyusun elemen secara fleksibel dalam satu baris atau kolom. Flexbox sangat berguna ketika kamu ingin menyusun elemen dengan cara yang responsif, karena elemen bisa menyesuaikan diri dengan ruang yang tersedia. Misalnya, Flexbox sering digunakan untuk membuat navigasi horizontal atau kolom yang bisa beradaptasi dengan ukuran layar. Di sisi lain, Grid Layout adalah metode layout yang lebih kompleks dan digunakan untuk menyusun elemen dalam dua dimensi, yaitu baris dan kolom. Grid sangat berguna untuk tata letak halaman yang lebih rumit, seperti membuat halaman dengan sidebar, konten utama, dan footer yang diatur dalam beberapa kolom. Flexbox lebih cocok digunakan untuk tata letak yang sederhana dalam satu arah (baik horizontal atau vertikal), sedangkan Grid Layout lebih tepat untuk tata letak yang lebih kompleks dan melibatkan banyak elemen dalam beberapa baris dan kolom.
+ - Flexbox dan Grid adalah dua alat yang sangat berguna untuk membangun layout web yang responsif dan rapi. Flexbox memberikan fleksibilitas dalam menyusun elemen secara horizontal atau vertikal, sementara Grid menawarkan kontrol penuh untuk menyusun elemen dalam bentuk baris dan kolom.
+
+ **5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)! :**
+ - 
