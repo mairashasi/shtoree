@@ -6,55 +6,30 @@
 
 {% block content %}
 <div class="flex items-center justify-center h-screen">
-  <div class="bg-white p-10 rounded-lg shadow-lg w-[30rem]">
-    <h1 class="text-2xl text-[#A73121] font-bold text-center mb-6">Register</h1>
+    <div class="bg-white p-10 rounded-lg shadow-lg w-[30rem]">
+        <h1 class="text-2xl text-[#A73121] font-bold text-center mb-6">Register</h1>
 
-    <form method="POST">
-      {% csrf_token %}
-      <div class="space-y-4">
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+            {{ form.as_p }}
 
-        <div>
-          <label for="username" class="block text-gray-700">Username:</label>
-          <input type="text" id="username" name="username" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#952323] focus:ring-[#952323] focus:ring-2 focus:outline-none" />
-          {% if form.username.errors %}
-            <p class="text-red-500 text-sm mt-1">{{ form.username.errors }}</p>
-          {% else %}
-            <p class="text-gray-500 text-sm mt-1">{{ form.username.help_text }}</p>
-          {% endif %}
-        </div>
+            <div class="flex justify-center">
+                <input class="w-full bg-[#952323] hover:bg-orange-700 text-white py-2 px-4 rounded-lg focus:border-[#952323] focus:ring-[#952323] focus:ring-2 focus:outline-none" type="submit" name="submit" value="Register" />
+            </div>
+        </form>
 
-        <div>
-          <label for="password" class="block text-gray-700">Password:</label>
-          <input type="password" id="password" name="password" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#952323] focus:ring-[#952323] focus:ring-2 focus:outline-none" />
-          {% if form.password.errors %}
-            <p class="text-red-500 text-sm mt-1">{{ form.password.errors }}</p>
-          {% else %}
-            <p class="text-gray-500 text-sm mt-1">{{ form.password.help_text }}</p>
-          {% endif %}
-        </div>
+        {% if messages %}
+        <ul class="mt-4 text-red-500">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
 
-        <div>
-          <label for="password2" class="block text-gray-700">Confirm Password:</label>
-          <input type="password" id="password2" name="password2" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#952323] focus:ring-[#952323] focus:ring-2 focus:outline-none" />
-          {% if form.password2.errors %}
-            <p class="text-red-500 text-sm mt-1">{{ form.password2.errors }}</p>
-          {% else %}
-            <p class="text-gray-500 text-sm mt-1">{{ form.password2.help_text }}</p>
-          {% endif %}
-        </div>
-
-      </div>
-
-      <button type="submit" class="w-full mt-6 bg-[#952323] hover:bg-orange-700 text-white py-2 px-4 rounded-lg">Register</button>
-    </form>
-
-    {% if messages %}
-    <ul class="mt-4 text-red-500">
-      {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </div>
+        <p class="text-center text-gray-600 mt-6">
+            Already have an account? 
+            <a href="{% url 'main:login' %}" class="text-[#952323] hover:text-orange-700 font-bold">Back to Login</a>
+        </p>
+    </div>
 </div>
 {% endblock content %}

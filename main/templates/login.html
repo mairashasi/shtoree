@@ -26,12 +26,12 @@
     </form>
 
     {% if messages %}
-    <ul class="mt-4 text-red-500">
+    <ul class="mt-4 text-green-500">
       {% for message in messages %}
-      <li>{{ message }}</li>
+        <li>{{ message }}</li>
       {% endfor %}
     </ul>
-    {% endif %}
+    {% endif %}    
 
     <div class="text-center mt-4">
       Don't have an account? <a href="{% url 'main:register' %}" class="text-orange-600 hover:text-orange-700 font-bold">Register Now</a>
