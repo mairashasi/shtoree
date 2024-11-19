@@ -1,7 +1,8 @@
+import json
 from django.shortcuts import render, redirect, reverse 
 from main.forms import ProductForm
 from main.models import Product
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -141,3 +142,20 @@ def add_product_rating_ajax(request):
     )
     new_rating.save()
     return HttpResponse(b"CREATED", status=201)
+
+@csrf_exempt
+def create_product_rating_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+
+        # Buat Product baru sesuai dengan data yang diterima dari Flutter
+        new_product = Product.objects.create(
+            user = request.user,
+            name=data["name"],
+            price=int(data["price"]),
+            feedback=data["feedback"],
+            rating=int(data["rating"]),
+        )
+        new_product.save()
+        return JsonResponse({"status": "success"}, status=200)
+    return JsonResponse({"status": "error"}, status=401)

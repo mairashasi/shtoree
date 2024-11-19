@@ -4,7 +4,7 @@ from main.views import register
 from main.views import login_user
 from main.views import logout_user
 from main.views import edit_product_rating
-from main.views import delete_product_rating
+from main.views import delete_product_rating, create_product_rating_flutter
 
 app_name = 'main'
 
@@ -21,5 +21,5 @@ urlpatterns = [
     path('edit-product-rating/<uuid:id>', edit_product_rating, name='edit_product_rating'),
     path('delete/<uuid:id>', delete_product_rating, name='delete_product_rating'),
     path('create-product-rating-ajax', add_product_rating_ajax, name='add_product_rating_ajax'),
-
+    path('create-flutter/', create_product_rating_flutter, name='create_product_rating_flutter'),
 ]
